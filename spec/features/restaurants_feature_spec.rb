@@ -51,9 +51,16 @@ describe 'restaurant' do
       click_button("Submit")
     end
 
-    it 'each restaurant name should be a link' do
+    it 'each restaurant should have its own page' do
       visit '/restaurants/'
-      expect(page).to have_link('Pizza place')
+      expect(page).to have_link('View Pizza place')
+    end
+
+    it 'the page of each restaurant should have its name, description and rating' do
+      @restaurant = Restaurant.first
+      visit "/restaurants/#{@restaurant.id}"
+      expect(page).to have_content('Pizza place')
+      expect(page).to have_content('Great pizza here!')
     end
   end
 
@@ -76,7 +83,7 @@ describe 'restaurant' do
   end
 
   context 'reviews' do
-    
+
     before do
       @restaurant = Restaurant.create(name: "Store Street Espresso", description: "San Francisco-style coffee in London.", rating: 5)
     end
