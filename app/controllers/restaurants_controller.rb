@@ -12,13 +12,12 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.create(restaurant_params)
     
     @restaurants = Restaurant.all
-    render :index
+    redirect_to restaurants_path
   end
 
   private
-      def restaurant_params
+    def restaurant_params
       params.require(:restaurant).permit(:name, :description, :rating)
-      # name: params[:name], description: params[:description], rating: params[:rating]
     end
 
 end
