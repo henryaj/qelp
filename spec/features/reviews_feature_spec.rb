@@ -26,4 +26,15 @@ describe 'restaurant reviews' do
 
   end
 
+  context 'creating reviews' do
+    before do
+      @restaurant = Restaurant.create(name: "Store Street Espresso", description: "San Francisco-style coffee in London.", rating: 5)
+    end
+
+    it 'there should be a link to a write review page on each restaurant page' do
+      visit "/restaurants/#{@restaurant.id}"
+      expect(page).to have_link('Leave review')
+    end
+
+  end
 end
