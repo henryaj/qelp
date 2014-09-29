@@ -42,4 +42,21 @@ describe 'restaurant' do
 
   end
 
+  context 'editing restaurants' do
+  end
+
+  context 'deleting restaurants' do
+
+    it 'a user should be able to delete a restaurant' do
+      visit '/restaurants/new'
+      fill_in("restaurant[name]", :with => "Pizza place")
+      fill_in("restaurant[description]", :with => "Great pizza here!")
+      fill_in("restaurant[rating]", :with => "4")
+      click_button("Submit")
+      click_link 'Delete Pizza place'
+      expect(page).not_to have_content 'Pizza place'
+      expect(page).to have_content 'Restaurant deleted successfully'
+    end
+
+  end
 end

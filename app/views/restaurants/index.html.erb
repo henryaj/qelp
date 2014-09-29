@@ -1,8 +1,11 @@
+<%= notice %>
+
 <% if @restaurants.any? %>
   <% @restaurants.each do |restaurant| %>
   <p><%= restaurant.name %></p>
   <p><%= restaurant.description %></p>
   <p><%= restaurant.rating %></p>
+  <p><%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %>
   <% end %>
 <% else %>
   <p>No restaurants.</p>
