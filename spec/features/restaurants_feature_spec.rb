@@ -29,6 +29,16 @@ describe 'restaurant' do
       expect(page).to have_css('form')
     end
 
+    it 'when the form is filled in and submitted, a new restaurant should appear on the restaurants page' do
+      visit '/restaurants/new'
+      fill_in("restaurant[name]", :with => "Pizza place")
+      fill_in("restaurant[description]", :with => "Great pizza here!")
+      fill_in("restaurant[rating]", :with => "4")
+      click_button("Submit")
+      expect(page).to have_content('Pizza place')
+      expect(page).not_to have_content('No restaurants yet')
+    end
+
   end
 
 end

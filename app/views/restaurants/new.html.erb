@@ -1,6 +1,6 @@
 <%= form_for @restaurant, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
   <%= f.text_field :name %>
   <%= f.text_area :description, size: "60x12" %>
-  <%= f.number_field(:rating, in: 1.0..5.0, step: 0.5) %>
+  <%= f.text_field :rating %>
   <%= f.submit "Submit" %>
 <% end %>
