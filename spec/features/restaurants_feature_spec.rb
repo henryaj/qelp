@@ -42,6 +42,21 @@ describe 'restaurant' do
 
   end
 
+  context 'viewing restaurants' do
+    before do
+      visit '/restaurants/new'
+      fill_in("restaurant[name]", :with => "Pizza place")
+      fill_in("restaurant[description]", :with => "Great pizza here!")
+      fill_in("restaurant[rating]", :with => "4")
+      click_button("Submit")
+    end
+
+    it 'each restaurant name should be a link' do
+      visit '/restaurants/'
+      expect(page).to have_link('Pizza place')
+    end
+  end
+
   context 'editing restaurants' do
   end
 
@@ -56,6 +71,20 @@ describe 'restaurant' do
       click_link 'Delete Pizza place'
       expect(page).not_to have_content 'Pizza place'
       expect(page).to have_content 'Restaurant deleted successfully'
+    end
+
+  end
+
+  context 'reviews' do
+    
+    before do
+      @restaurant = Restaurant.create(name: "Store Street Espresso", description: "San Francisco-style coffee in London.", rating: 5)
+    end
+
+    it 'should be able to have a review' do
+      @restaurant.reviews.create(content: "Pretty good coffee", rating: 4)
+      expect(@restaurant.reviews.first.content).to eq "Pretty good coffee"
+      expect(@restaurant.reviews.first.rating).to eq 4
     end
 
   end
