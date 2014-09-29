@@ -37,6 +37,7 @@ describe 'restaurant' do
       click_button("Submit")
       expect(page).to have_content('Pizza place')
       expect(page).not_to have_content('No restaurants yet')
+      expect(current_path).to eq('/restaurants')
     end
 
   end
