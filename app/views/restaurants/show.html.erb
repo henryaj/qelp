@@ -7,7 +7,7 @@
     <p>No reviews.</p>
   <% else %>
     <ul>
-      <%= @restaurant.reviews.each do |review| %>
+      <% @restaurant.reviews.each do |review| %>
         <li><%= review.content %></li>
     </ul>
   <% end %>
