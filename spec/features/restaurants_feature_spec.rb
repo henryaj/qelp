@@ -40,6 +40,17 @@ describe 'restaurant' do
       expect(current_path).to eq('/restaurants')
     end
 
+    it 'restaurants cannot have a name shorter than three characters' do
+      visit '/restaurants/new'
+      fill_in("restaurant[name]", :with => "Pi")
+      fill_in("restaurant[description]", :with => "Great pizza here!")
+      fill_in("restaurant[rating]", :with => "4")
+      click_button("Submit")
+      expect(page).to have_content('That restaurant name is too short.')
+      visit('/restaurants')
+      expect(page).not_to have_content('Pi')
+    end
+
   end
 
   context 'viewing restaurants' do
