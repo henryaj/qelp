@@ -36,5 +36,23 @@ describe 'restaurant reviews' do
       expect(page).to have_link('Leave review')
     end
 
+    it 'the write review page should have a form on it' do
+      visit "/restaurants/#{@restaurant.id}"
+      click_link('Leave review')
+      expect(page).to have_css('form')
+    end
+
+    it 'when submitted, I should be on the restaurant page and see the review there' do
+      visit "/restaurants/#{@restaurant.id}"
+      click_link('Leave review')
+      fill_in("Content", with: "Lovely food here")
+      fill_in("Rating", with: "4")
+      click_button("Submit")
+      expect(current_path).to eq("/restaurants/#{@restaurant.id}")
+      expect(page).to have_content("Lovely food here")
+      expect(page).to have_content("4")
+    end
+
+
   end
 end
