@@ -45,14 +45,22 @@ describe 'restaurant reviews' do
     it 'when submitted, I should be on the restaurant page and see the review there' do
       visit "/restaurants/#{@restaurant.id}"
       click_link('Leave review')
-      fill_in("Content", with: "Lovely food here")
-      fill_in("Rating", with: "4")
+      fill_in("Content", with: "Lovely coffee here")
+      fill_in("Rating", with: "5")
       click_button("Submit")
       expect(current_path).to eq("/restaurants/#{@restaurant.id}")
-      expect(page).to have_content("Lovely food here")
-      expect(page).to have_content("4")
+      expect(page).to have_content("Lovely coffee here")
+      expect(page).to have_content("5")
     end
 
+    it 'users should not be able to submit reviews with ratings over 5' do
+      visit "/restaurants/#{@restaurant.id}"
+      click_link('Leave review')
+      fill_in("Content", with: "Lovely food here")
+      fill_in("Rating", with: "18")
+      click_button("Submit")
+      expect(page).to have_content("Your rating must be between 1 to 5.")
+    end
 
   end
 end
