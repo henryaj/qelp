@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
+//
+// The above lines with '=' are 'magic comments'! They determine the order in which
+// your JS resources are loaded at runtime.
