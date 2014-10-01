@@ -8,8 +8,8 @@
   <% else %>
     <ul>
       <% @restaurant.reviews.each do |review| %>
-        <li><%= review.content %></li>
-    </ul>
+        <li><%= review.content %>, <strong><%= review.rating %></strong>/5<em> – posted about <%= time_ago_in_words(review.created_at) %> ago</em></li>
   <% end %>
+    </ul>
 <% end %>
 <%= link_to "Leave review", new_restaurant_review_path(@restaurant) %>
