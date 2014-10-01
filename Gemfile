@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rspec-rails', group: :test
 gem 'capybara', group: :test
 gem 'poltergeist', group: :test
+gem 'database_cleaner', group: :test
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
