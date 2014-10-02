@@ -1,28 +1,13 @@
-== README
+# qelp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Like Yelp, but worse. (Hey, at least it isn't full of out-of-date entries like its name-brand competitor...)
 
-Things you may want to cover:
+Built using Ruby on Rails, with testing from RSpec and Capybara. Postgres is the database of choice here.
 
-* Ruby version
+## Technologies
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Ruby on Rails
+* Postgres
+* RSpec, Capybara and Poltergeist for testing
+* Devise
+* Paperclip and Imagemagick
