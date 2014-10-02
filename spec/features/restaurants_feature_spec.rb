@@ -54,7 +54,7 @@ describe 'restaurant' do
 
   context 'uploading images' do
 
-    it 'restaurants can have an image' do
+    it "restaurants can have an image a restaurant's image shows up on the home page" do
       visit '/restaurants/new'
       fill_in("restaurant[name]", :with => "Pizza place")
       fill_in("restaurant[description]", :with => "Great pizza here!")
@@ -64,7 +64,15 @@ describe 'restaurant' do
       expect(page).to have_xpath("//img") 
     end
 
-    xit "a restaurant's image shows up on the home page" do
+    it "a restaurant's image shows up on the restaurant show page" do
+      visit '/restaurants/new'
+      fill_in("restaurant[name]", :with => "Pizza place")
+      fill_in("restaurant[description]", :with => "Great pizza here!")
+      fill_in("restaurant[rating]", :with => "4")
+      attach_file("restaurant[image]", 'spec/fixtures/files/image.jpg')
+      click_button("Submit")
+      click_link("View Pizza place")
+      expect(page).to have_xpath("//img")
     end
 
   end

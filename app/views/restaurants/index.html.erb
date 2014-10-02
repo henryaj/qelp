@@ -1,6 +1,6 @@
 <% if @restaurants.any? %>
   <restaurant><% @restaurants.each do |restaurant| %>
-  <h3><%= image_tag restaurant.image.url(:thumb) %><%= restaurant.name %></h3>
+  <h1><%= image_tag restaurant.image.url(:thumb) if restaurant.image? %><%= restaurant.name %></h1>
   <p><%= restaurant.rating %></p>
   <ul>
       <% restaurant.reviews.each do |review| %>
