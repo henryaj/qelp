@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 
+gem 'devise'
+
 gem 'rspec-rails', group: :test
 gem 'capybara', group: :test
 gem 'poltergeist', group: :test
