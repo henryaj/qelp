@@ -12,4 +12,11 @@ RSpec.describe Restaurant, :type => :model do
       restaurant = Restaurant.new(name: "The Ivy")
       expect(restaurant).to have(1).error_on(:name)
     end
+
+  it 'has a user who created it' do
+    restaurant = Restaurant.create(name: "The Ivy", user_id: 1)
+    expect(restaurant.user_id).to eq(1)
+  end
+
+
 end
