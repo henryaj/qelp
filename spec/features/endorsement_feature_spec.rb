@@ -11,5 +11,9 @@ describe 'endorsing reviews' do
     click_link 'Endorse'
     expect(page).to have_content('1 endorsement')
   end
+
+  xit 'a user cannot endorse a review more than once'
+
+  xit 'a user cannot endorse their own reviews'
   
 end

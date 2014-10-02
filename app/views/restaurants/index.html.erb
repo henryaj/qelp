@@ -1,7 +1,7 @@
 <% if @restaurants.any? %>
   <restaurant><% @restaurants.each do |restaurant| %>
   <h1><%= image_tag restaurant.image.url(:thumb) if restaurant.image? %><%= restaurant.name %></h1>
-  <p><%= restaurant.rating %></p>
+  <p>Average rating: <%= restaurant.average_rating %></p>
   <ul>
       <% restaurant.reviews.each do |review| %>
         <li>

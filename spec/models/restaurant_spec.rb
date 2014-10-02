@@ -22,6 +22,24 @@ RSpec.describe Restaurant, :type => :model do
     expect(restaurant.user_id).to eq(1)
   end
 
+  it 'should know its average rating with one review' do
+    restaurant = Restaurant.create(name: "The Ivy")
+    expect(restaurant.average_rating).to eq("N/A")
+  end
+
+  it 'should know its average rating with one review' do
+    restaurant = Restaurant.create(name: "The Ivy")
+    restaurant.reviews.create(content: "bad", rating: 1)
+    expect(restaurant.average_rating).to eq(1)
+  end
+
+  it 'should know its average rating with two reviews' do
+    restaurant = Restaurant.create(name: "The Ivy")
+    restaurant.reviews.create(content: "bad", rating: 1)
+    restaurant.reviews.create(content: "not bad", rating: 3)
+    expect(restaurant.average_rating).to eq(2)
+  end
+
 
 
 end

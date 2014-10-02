@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'restaurant' do
+describe 'restaurant', :type => :feature do
   context 'without any restaurants' do
     it 'should display a prompt to add a restaurant' do
       visit '/restaurants'
@@ -84,6 +84,17 @@ describe 'restaurant' do
       fill_in("restaurant[description]", :with => "Great pizza here!")
       fill_in("restaurant[rating]", :with => "4")
       click_button("Submit")
+      @restaurant = Restaurant.first
+      visit "/restaurants/#{@restaurant.id}"
+      click_link('Leave review')
+      fill_in("Content", with: "Delicious")
+      fill_in("Rating", with: "5")
+      click_button("Submit")
+      visit "/restaurants/#{@restaurant.id}"
+      click_link('Leave review')
+      fill_in("Content", with: "Not bad")
+      fill_in("Rating", with: "3")
+      click_button("Submit")
     end
 
     it 'each restaurant should have its own page' do
@@ -91,11 +102,17 @@ describe 'restaurant' do
       expect(page).to have_link('View Pizza place')
     end
 
-    it 'the page of each restaurant should have its name, description and rating' do
-      @restaurant = Restaurant.first
+    it 'the page of each restaurant should have its name, description and its average rating' do
       visit "/restaurants/#{@restaurant.id}"
       expect(page).to have_content('Pizza place')
       expect(page).to have_content('Great pizza here!')
+      expect(page).to have_content('Average rating: 4')
+    end
+
+    it 'the homepage should show each restaurant and include its rating' do
+      visit "/restaurants"
+      expect(page).to have_content('Pizza place')
+      expect(page).to have_content('Average rating: 4')
     end
   end
 
@@ -114,6 +131,8 @@ describe 'restaurant' do
       expect(page).not_to have_content 'Pizza place'
       expect(page).to have_content 'Restaurant deleted successfully'
     end
+
+    xit 'a user can only delete a restaurant that they have created'
 
   end
 

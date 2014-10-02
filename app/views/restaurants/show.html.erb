@@ -7,6 +7,7 @@
   <% if !@restaurant.reviews.any? %>
     <p>No reviews.</p>
   <% else %>
+    <p>Average rating: <%= @restaurant.average_rating %></p>
     <ul>
       <% @restaurant.reviews.each do |review| %>
         <li>
