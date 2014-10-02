@@ -13,10 +13,15 @@ RSpec.describe Restaurant, :type => :model do
       expect(restaurant).to have(1).error_on(:name)
     end
 
+  it 'each restaurant can have an image' do
+    expect(ActiveRecord::Base.connection.column_exists?(:restaurants, :image_file_name)).to be true
+  end
+
   it 'has a user who created it' do
     restaurant = Restaurant.create(name: "The Ivy", user_id: 1)
     expect(restaurant.user_id).to eq(1)
   end
+
 
 
 end
