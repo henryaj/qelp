@@ -5,6 +5,8 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+gem 'poltergeist'
+
 gem 'rspec-rails', group: :test
 gem 'capybara', group: :test
 gem 'poltergeist', group: :test
