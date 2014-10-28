@@ -1,8 +1,6 @@
 # qelp
 
-Like Yelp, but worse. (Hey, at least it isn't full of out-of-date entries like its name-brand competitor...)
-
-Built using Ruby on Rails, with testing from RSpec and Capybara. Postgres is the database of choice here.
+A little Yelp clone. Built using Ruby on Rails, with testing from RSpec and Capybara. Postgres is the database of choice here. This was the foundation on which [Railstagram](https://github.com/henryaj/railstagram) was built, which is much more impressive (both technically and aesthetically).
 
 ## Technologies
 
