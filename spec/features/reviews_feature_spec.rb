@@ -64,11 +64,4 @@ describe 'restaurant reviews' do
 
   end
 
-  context 'deleting reviews' do
-
-    xit 'reviews can be deleted'
-
-    xit 'a user can only delete a review they have left'
-
-  end
 end

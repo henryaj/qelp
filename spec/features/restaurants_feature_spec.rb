@@ -132,8 +132,6 @@ describe 'restaurant', :type => :feature do
       expect(page).to have_content 'Restaurant deleted successfully'
     end
 
-    xit 'a user can only delete a restaurant that they have created'
-
   end
 
 end
